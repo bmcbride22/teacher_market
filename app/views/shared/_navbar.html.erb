@@ -18,5 +18,10 @@
     <li>
       <a href="#" class="text-gray-600 hover:text-sky-600 font-medium">Contact</a>
     </li>
+    <% if current_user %>
+      <li>
+        <%= button_to 'Log out', destroy_user_session_path, method: :delete, class:"text-gray-600 hover:text-sky-600 font-medium" %>
+      </li>
+    <% end %>
   </ul>
 </nav>
