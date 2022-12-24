@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  resource: one
+  user_id: one
+  payment_type_id: one
 
 two:
-  resource: two
+  user_id: two
+  payment_type_id: two
