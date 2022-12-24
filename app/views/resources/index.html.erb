@@ -2,13 +2,88 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-
-  <div class="flex justify-between items-center mb-6">
-    <h1 class="font-bold text-4xl">Resources</h1>
+  <!--
+	<div class="flex justify-between items-center mb-6">
     <%= link_to 'New resource', new_resource_path, class: "btn btn-primary" %>
   </div>
-
+	-->
   <div id="resources" class="min-w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
     <%= render @resources %>
+  </div>
+</div>
+<div class="bg-white container">
+  <div class="py-16 sm:py-24 xl:mx-auto xl:max-w-7xl xl:px-8">
+    <div class="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
+      <h2 class="text-2xl font-bold tracking-tight text-gray-900">Browse by Category</h2>
+      <a href="#" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+        Browse all categories
+        <span aria-hidden="true"> &rarr;</span>
+      </a>
+    </div>
+    <div class="mt-4 flow-root">
+      <div class="-my-2">
+        <div class="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
+          <div class="min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
+            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+              <span aria-hidden="true" class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="h-full w-full object-cover object-center">
+              </span>
+              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+              <span class="relative mt-auto text-center text-xl font-bold text-white">Mathematics</span>
+            </a>
+            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+              <span aria-hidden="true" class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1612454001981-ec4f7eed5cc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=691&q=80" alt="" class="h-full w-full object-cover object-center">
+              </span>
+              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+              <span class="relative mt-auto text-center text-xl font-bold text-white">Biology</span>
+            </a>
+            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+              <span aria-hidden="true" class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="" class="h-full w-full object-cover object-center">
+              </span>
+              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+              <span class="relative mt-auto text-center text-xl font-bold text-white">English</span>
+            </a>
+            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+              <span aria-hidden="true" class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="h-full w-full object-cover object-center">
+              </span>
+              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+              <span class="relative mt-auto text-center text-xl font-bold text-white">Economics</span>
+            </a>
+            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
+              <span aria-hidden="true" class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1635524168565-fd454def6512?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" class="h-full w-full object-cover object-center">
+              </span>
+              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
+              <span class="relative mt-auto text-center text-xl font-bold text-white">Physics</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 px-4 sm:hidden">
+      <a href="#" class="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
+        Browse all categories
+        <span aria-hidden="true"> &rarr;</span>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="sr-only">Resources</h2>
+    <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+    </div>
   </div>
 </div>
