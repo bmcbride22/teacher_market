@@ -6,7 +6,6 @@ import { createApp } from "vue/dist/vue.esm-bundler";
 // import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 // import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 import Home from "../components/views/Home.vue";
-import Navbar from "../components/views/Navbar.vue";
 
 const app = createApp({
   data() {
@@ -18,6 +17,5 @@ const app = createApp({
 
 // import (and use) the components one by one
 app.component("Home", Home);
-app.component("Navbar", Navbar);
-app.component("Test", Test);
+
 app.mount("#vue");
