@@ -1,0 +1,3 @@
+class Subjet < ApplicationRecord
+            
+end
