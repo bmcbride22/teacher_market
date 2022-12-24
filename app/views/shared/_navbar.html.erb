@@ -87,7 +87,7 @@
           </div>
         </div> %>
         <% if user_signed_in? %>
-          <a href="<%= user_path(current_user.id) %>" class="ml-6 inline-flex items-center rounded-md border border-transparent bg-violet-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Account</a>
+          <a href="/users/<%= current_user.id %>" class="ml-6 inline-flex items-center rounded-md border border-transparent bg-violet-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Account</a>
           <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: "ml-6 inline-flex items-center rounded-md border border-violet-600 border-transparent bg-violet-100 px-4 py-2 text-base font-medium text-violet-600 shadow-sm hover:bg-violet-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2" %>
         <% else %>
           <a href="/users/sign_up" class="ml-6 inline-flex items-center rounded-md border border-transparent bg-violet-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Sign up</a>

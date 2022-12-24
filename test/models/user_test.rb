@@ -13,7 +13,7 @@
 #  reset_password_token   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  subject_id             :bigint           not null
+#  subject_id             :bigint           default(1), not null
 #
 # Indexes
 #

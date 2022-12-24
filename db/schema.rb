@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_24_211501) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_24_225352) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -100,6 +100,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_211501) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "payment_method_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_method_id"], name: "index_transactions_on_payment_method_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
+  create_table "transactions_resources", force: :cascade do |t|
+    t.bigint "resource_id", null: false
+    t.bigint "transaction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resource_id"], name: "index_transactions_resources_on_resource_id"
+    t.index ["transaction_id"], name: "index_transactions_resources_on_transaction_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -110,7 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_211501) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.bigint "subject_id", null: false
+    t.bigint "subject_id", default: 1, null: false
     t.integer "grade_level"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -126,5 +144,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_211501) do
   add_foreign_key "resources", "media_types"
   add_foreign_key "resources", "subjects"
   add_foreign_key "resources", "users"
+  add_foreign_key "transactions", "payment_methods"
+  add_foreign_key "transactions", "users"
+  add_foreign_key "transactions_resources", "resources"
+  add_foreign_key "transactions_resources", "transactions"
   add_foreign_key "users", "subjects"
 end
