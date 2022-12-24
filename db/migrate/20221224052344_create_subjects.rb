@@ -1,6 +1,6 @@
-class CreateSubjets < ActiveRecord::Migration[7.0]
+class CreateSubjects < ActiveRecord::Migration[7.0]
   def change
-    create_table :subjets do |t|
+    create_table :subjects do |t|
       t.string :title
       t.integer :id
 
