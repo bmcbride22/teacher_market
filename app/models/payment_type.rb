@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class PaymentType < ApplicationRecord
-            
+  has_many :payment_methods
 end

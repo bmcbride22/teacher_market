@@ -9,5 +9,5 @@
 #  updated_at :datetime         not null
 #
 class MediaType < ApplicationRecord
-            
+  has_many :resources
 end
