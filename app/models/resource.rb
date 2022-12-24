@@ -9,5 +9,5 @@
 #  updated_at :datetime         not null
 #
 class Resource < ApplicationRecord
-            
+  has_one_attached :resource_file
 end
