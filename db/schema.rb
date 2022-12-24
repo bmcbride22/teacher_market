@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_24_091559) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_24_211501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_091559) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "payment_methods", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "payment_type_id", null: false
+    t.text "billing_address"
+    t.string "card_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_type_id"], name: "index_payment_methods_on_payment_type_id"
+    t.index ["user_id"], name: "index_payment_methods_on_user_id"
+  end
+
   create_table "payment_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -69,6 +80,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_091559) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "subject_id", null: false
+    t.bigint "media_type_id", null: false
+    t.index ["media_type_id"], name: "index_resources_on_media_type_id"
+    t.index ["subject_id"], name: "index_resources_on_subject_id"
+    t.index ["user_id"], name: "index_resources_on_user_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -93,12 +110,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_24_091559) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.bigint "subject_id", null: false
+    t.integer "grade_level"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["subject_id"], name: "index_users_on_subject_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "payment_methods", "payment_types"
+  add_foreign_key "payment_methods", "users"
   add_foreign_key "resource_tags", "resources"
   add_foreign_key "resource_tags", "tags"
+  add_foreign_key "resources", "media_types"
+  add_foreign_key "resources", "subjects"
+  add_foreign_key "resources", "users"
+  add_foreign_key "users", "subjects"
 end
