@@ -25,4 +25,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
+  has_many :resources
+  has_one :payment_types
+  has_one :subject
 end
