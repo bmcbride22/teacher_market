@@ -21,7 +21,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class PaymentMethod < ApplicationRecord
-    belongs_to :user
-    belongs_to :payment_type
-            
+  belongs_to :user
+  belongs_to :payment_type
+  has_many :transactions
 end

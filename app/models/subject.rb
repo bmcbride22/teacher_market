@@ -8,5 +8,6 @@
 #  updated_at :datetime         not null
 #
 class Subject < ApplicationRecord
-            
+  has_many :users
+  has_many :resources
 end
