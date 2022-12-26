@@ -1,2 +1,101 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="flex justify-start mb-12 bg-white">
+    <%= link_to edit_user_registration_path do %>
+      <div class="relative">
+        <img class="h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
+        <span class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></span>
+      </div>
+    <% end %>
+    <%= link_to edit_user_registration_path, class:"flex flex-col justify-center" do %>
+      <div class="ml-4 flex flex-col justify-center">
+        <h3><%= @user.first_name || 'Porter' %> <%= @user.last_name || 'McBride' %></h3>
+        <p class="ml-2"><%= @user.subject.title.capitalize || 'Economics' %> - Grade <%= @user.grade_level || 9 %></p>
+      </div>
+    <% end %>
+    <%= link_to 'Edit', edit_user_registration_path, class: "mt-6 text-gray-400" %>
+  </div>
+  <div class="bg-white">
+    <div class="flex justify-between">
+      <h2>My Resources</h2>
+    </div>
+    <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <h2 class="sr-only">Resources</h2>
+      <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
+        <%= render 'shared/empty_resource_grid_item' %>
+        <%= render 'shared/resource_grid_item' %>
+        <%= render 'shared/resource_grid_item' %>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div class="mb-12 shadow sm:overflow-hidden sm:rounded-md">
+		<div class="space-y-6 bg-white py-6 px-4 sm:p-6">
+			<div>
+				<h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
+			</div>
+			<div class="grid grid-cols-6 gap-6">
+				<div class="col-span-6 sm:col-span-3">
+					<label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
+					<input type="text" name="first-name" id="first-name" autocomplete="given-name" placeholder="<%= @user.first_name || "Porter" %>" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="col-span-6 sm:col-span-3">
+					<label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+					<input type="text" name="last-name" id="last-name" autocomplete="family-name"  placeholder="<%= @user.last_name || "McBride" %>" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="col-span-6 sm:col-span-4">
+					<label for="email-address" class="block text-sm font-medium text-gray-700">Email address</label>
+					<input type="text" name="email-address" id="email-address"  placeholder="<%= @user.email %>" autocomplete="email" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="col-span-6 sm:col-span-4">
+					<label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+					<input type="text" name="subject" id="subject"  placeholder="<%= @user.subject.title.capitalize %>" autocomplete="subject" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="mt-12 col-span-6 sm:col-span-4">
+					<h3 class="text-lg font-medium leading-6 text-gray-900">Payment Method</h3>
+				</div>
+				<div class="col-span-6 sm:col-span-4">
+					<label for="card_number" class="block text-sm font-medium text-gray-700">Card Number</label>
+					<input type="text" name="card_number" id="card_number"  placeholder="<%= @user.subject.title.capitalize %>" autocomplete="subject" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="col-span-6 sm:col-span-6 lg:col-span-2">
+					<label for="card_type" class="block text-sm font-medium text-gray-700">Card Type</label>
+					<input type="text" name="card_type" id="card_type" autocomplete="address-level2" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="col-span-6">
+					<label for="street-address" class="block text-sm font-medium text-gray-700">Billing address</label>
+					<input type="text" name="street-address" id="street-address" autocomplete="street-address" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="col-span-6 sm:col-span-6 lg:col-span-2">
+					<label for="city" class="block text-sm font-medium text-gray-700">City</label>
+					<input type="text" name="city" id="city" autocomplete="address-level2" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+					<label for="region" class="block text-sm font-medium text-gray-700">State / Province</label>
+					<input type="text" name="region" id="region" autocomplete="address-level1" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+				<div class="col-span-6 sm:col-span-3 lg:col-span-2">
+					<label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
+					<input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-violet-500 focus:outline-none focus:ring-violet-500 sm:text-sm">
+				</div>
+			</div>
+		</div>
+		<div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+			<button type="edit" class="inline-flex justify-center rounded-md border border-transparent bg-violet-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Edit</button>
+		</div>
+	</div>
+	-->
+  <!--
+  <div class="bg-white"></div>
+  <div class="flex justify-between">
+    <h2>Payment History</h2>
+  </div>
+  <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="sr-only">Resources</h2>
+    <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+      <%= render 'shared/resource_grid_item' %>
+    </div>
+  </div>
+	-->
+</div>
