@@ -3,6 +3,7 @@
 # Table name: resources
 #
 #  id            :bigint           not null, primary key
+#  description   :text
 #  price         :float
 #  title         :string
 #  created_at    :datetime         not null

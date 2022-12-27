@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-  before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  before_action :set_resource, only: %i[show edit update destroy]
 
   # GET /resources
   def index
@@ -12,6 +12,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   def new
     @resource = Resource.new
+    @subjects = Subject.all
   end
 
   # GET /resources/1/edit
@@ -19,11 +20,16 @@ class ResourcesController < ApplicationController
 
   # POST /resources or /resources.json
   def create
+		@subjects = Subject.all
+    p resource_params
     @resource = Resource.new(resource_params)
+    @resource.media_type = MediaType.first
+		@resource.user = current_user
+    p @resource
 
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: "Resource was successfully created." }
+        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render :show, status: :created, location: @resource }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,7 +42,7 @@ class ResourcesController < ApplicationController
   def update
     respond_to do |format|
       if @resource.update(resource_params)
-        format.html { redirect_to @resource, notice: "Resource was successfully updated." }
+        format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }
         format.json { render :show, status: :ok, location: @resource }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,7 +55,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to resources_url, notice: "Resource was successfully destroyed." }
+      format.html { redirect_to resources_url, notice: 'Resource was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,7 +71,6 @@ class ResourcesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def resource_params
-    params.require(:resource).permit(:title, :price)
-
+    params.require(:resource).permit(:title, :price, :photo, :description, :subject_id, :media_type_id, :user_id, resource_files: [])
   end
 end
