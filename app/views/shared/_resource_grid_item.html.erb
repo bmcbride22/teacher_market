@@ -1,17 +1,18 @@
 <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
   <div class="aspect-w-3 aspect-h-4 bg-gray-200 group-hover:opacity-75 sm:aspect-none sm:h-96">
-    <img src="https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg" alt="Front of plain black t-shirt." class="h-full w-full object-cover object-center sm:h-full sm:w-full">
+    <%# <img src="https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg" alt="Front of plain black t-shirt." class="h-full w-full object-cover object-center sm:h-full sm:w-full"> %>
+    <%= image_tag resource.photo, class: "h-full w-full object-cover object-center sm:h-full sm:w-full", alt:"Resource thumbnail image"%>
   </div>
   <div class="flex flex-1 flex-col space-y-2 p-4">
     <h3 class="text-xl font-medium text-gray-900">
-      <a href="#">
+      <%= link_to resource_path(resource) do %>
         <span aria-hidden="true" class="absolute inset-0"></span>
-        Basic Tee
-      </a>
+        <%= resource.title %>
+      <% end %>
     </h3>
-    <p class="text-sm text-gray-500">Economics</p>
+    <p class="text-sm text-gray-500"><%= resource.description %></p>
     <div class="flex flex-1 flex-col justify-end">
-      <p class="text-base font-medium text-gray-900">$32</p>
+      <p class="text-base font-medium text-gray-900">$<%= resource.price %></p>
     </div>
   </div>
 </div>
