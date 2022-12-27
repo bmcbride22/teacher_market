@@ -25,8 +25,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Resource < ApplicationRecord
-  has_one_attached :resource_file
-  has_many :resource_tags
+  has_many_attached :resource_files, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
+  has_many :resource_tags, dependent: :destroy
   has_many :tags, through: :resource_tags
   belongs_to :user
   belongs_to :subject
