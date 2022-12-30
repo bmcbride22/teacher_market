@@ -7,7 +7,9 @@ class ResourcesController < ApplicationController
   end
 
   # GET /resources/1 or /resources/1.json
-  def show; end
+  def show
+    @transaction = Transaction.new
+  end
 
   # GET /resources/new
   def new
@@ -20,12 +22,11 @@ class ResourcesController < ApplicationController
 
   # POST /resources or /resources.json
   def create
-		@subjects = Subject.all
-    p resource_params
+    @subjects = Subject.all
+
     @resource = Resource.new(resource_params)
     @resource.media_type = MediaType.first
-		@resource.user = current_user
-    p @resource
+    @resource.user = current_user
 
     respond_to do |format|
       if @resource.save
@@ -71,6 +72,7 @@ class ResourcesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def resource_params
-    params.require(:resource).permit(:title, :price, :photo, :description, :subject_id, :media_type_id, :user_id, resource_files: [])
+    params.require(:resource).permit(:title, :price, :photo, :description, :subject_id, :user_id,
+                                     resource_files: [])
   end
 end
