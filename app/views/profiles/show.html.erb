@@ -2,13 +2,20 @@
   <div class="flex justify-start mb-12 bg-white">
     <%= link_to edit_user_registration_path do %>
       <div class="relative">
-        <img class="h-32 w-32 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
+        <% if current_user.avatar %>
+          <%= image_tag current_user.avatar, class:"h-32 w-32 rounded-full", id: 'userAvatar'%>
+        <% else %>
+          <svg id='userAvatar' class="h-32 w-32 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <%# <img id='userAvatar' class="h-14 w-14 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""> %>
+        <% end %>
         <span class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></span>
       </div>
     <% end %>
     <%= link_to edit_user_registration_path, class:"flex flex-col justify-center" do %>
       <div class="ml-4 flex flex-col justify-center">
-        <h3><%= @user.first_name || 'Porter' %> <%= @user.last_name || 'McBride' %></h3>
+        <h3><%= @user.first_name || 'Bob' %> <%= @user.last_name || 'Dylan' %></h3>
         <p class="ml-2"><%= @user.subject.title.capitalize || 'Economics' %> - Grade <%= @user.grade_level || 9 %></p>
       </div>
     <% end %>
@@ -35,8 +42,8 @@
     <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
       <h2 class="sr-only">My Purchases</h2>
       <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-        <% @user.transactions.each do |transaction| %>
-          <%= render 'shared/resource_grid_item', resource: transaction.resource %>
+        <% @user.purchased_resources.each do |resource| %>
+          <%= render 'shared/resource_grid_item', resource: resource %>
         <% end %>
       </div>
     </div>

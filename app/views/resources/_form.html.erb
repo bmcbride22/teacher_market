@@ -43,6 +43,16 @@
             </div>
           </div>
           <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+            <%= f.label :subject, class:"block text-sm font-medium text-gray-700"  %>
+            <div class="mt-1">
+              <select id="user_subject_id" name="user[subject_id]" autocomplete="subject_id" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                <%= Subject.all.each do |subject| %>
+                  <% if subject.id != 1 %>
+                    <option value="subject.id"><%= subject.title %></option>
+                  <% end %>
+                <% end %>
+              </select>
+            </div>
             <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
             <%= f.collection_select :subject_id, Subject.order(:title), :id, :title, class:"mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" %>
           </div>

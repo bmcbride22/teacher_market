@@ -34,5 +34,14 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :resources
   has_many :transactions
+
   belongs_to :subject
+
+  def purchased_resources
+    purchased_resources = []
+    transactions.each do |transaction|
+      purchased_resources.push(transaction.resource)
+    end
+    purchased_resources
+  end
 end

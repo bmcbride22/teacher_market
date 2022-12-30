@@ -21,4 +21,5 @@
 class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :resource
+  validates :resource, uniqueness: { scope: :user }
 end

@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
   before_action :set_resource, only: %i[show edit update destroy]
+  before_action :set_user
 
   # GET /resources
   def index
@@ -73,5 +74,9 @@ class ResourcesController < ApplicationController
   def resource_params
     params.require(:resource).permit(:title, :price, :photo, :description, :subject_id, :user_id,
                                      resource_files: [])
+  end
+
+  def set_user
+    @user = current_user
   end
 end
