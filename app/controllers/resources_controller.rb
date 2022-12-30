@@ -25,7 +25,6 @@ class ResourcesController < ApplicationController
     @subjects = Subject.all
 
     @resource = Resource.new(resource_params)
-    @resource.media_type = MediaType.first
     @resource.user = current_user
 
     respond_to do |format|

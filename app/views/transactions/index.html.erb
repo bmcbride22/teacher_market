@@ -1,0 +1,5 @@
+<h1>Hello from Transactions#index</h1>
+<% @transactions.each do |transaction|%>
+  <h2><%= transaction.resource.title %></h2>
+  <h4>purchased on <%= transaction.created_at.to_date %></h4>
+<% end %>

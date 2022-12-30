@@ -33,6 +33,6 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :resources
-  has_many :payment_methods
+  has_many :transactions
   belongs_to :subject
 end
