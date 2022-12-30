@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_27_061411) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_30_021553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,30 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_061411) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "media_types", force: :cascade do |t|
-    t.string "name"
-    t.string "extension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "payment_methods", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "payment_type_id", null: false
-    t.text "billing_address"
-    t.string "card_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["payment_type_id"], name: "index_payment_methods_on_payment_type_id"
-    t.index ["user_id"], name: "index_payment_methods_on_user_id"
-  end
-
-  create_table "payment_types", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "resource_tags", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.bigint "resource_id", null: false
@@ -82,9 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_061411) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "subject_id", null: false
-    t.bigint "media_type_id", null: false
     t.text "description"
-    t.index ["media_type_id"], name: "index_resources_on_media_type_id"
     t.index ["subject_id"], name: "index_resources_on_subject_id"
     t.index ["user_id"], name: "index_resources_on_user_id"
   end
@@ -103,20 +77,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_061411) do
 
   create_table "transactions", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "payment_method_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payment_method_id"], name: "index_transactions_on_payment_method_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
-  end
-
-  create_table "transactions_resources", force: :cascade do |t|
     t.bigint "resource_id", null: false
-    t.bigint "transaction_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["resource_id"], name: "index_transactions_resources_on_resource_id"
-    t.index ["transaction_id"], name: "index_transactions_resources_on_transaction_id"
+    t.index ["resource_id"], name: "index_transactions_on_resource_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -138,16 +103,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_27_061411) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "payment_methods", "payment_types"
-  add_foreign_key "payment_methods", "users"
   add_foreign_key "resource_tags", "resources"
   add_foreign_key "resource_tags", "tags"
-  add_foreign_key "resources", "media_types"
   add_foreign_key "resources", "subjects"
   add_foreign_key "resources", "users"
-  add_foreign_key "transactions", "payment_methods"
+  add_foreign_key "transactions", "resources"
   add_foreign_key "transactions", "users"
-  add_foreign_key "transactions_resources", "resources"
-  add_foreign_key "transactions_resources", "transactions"
   add_foreign_key "users", "subjects"
 end
