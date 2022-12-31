@@ -8,25 +8,26 @@
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  subject_id  :bigint           not null
 #  user_id     :bigint           not null
 #
 # Indexes
 #
-#  index_resources_on_subject_id  (subject_id)
-#  index_resources_on_user_id     (user_id)
+#  index_resources_on_user_id  (user_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (subject_id => subjects.id)
 #  fk_rails_...  (user_id => users.id)
 #
 class Resource < ApplicationRecord
   has_many_attached :resource_files, dependent: :destroy
   has_one_attached :photo, dependent: :destroy
-  has_many :resource_tags, dependent: :destroy
-  has_many :tags, through: :resource_tags
   belongs_to :user
-  belongs_to :subject
 
+  acts_as_taggable_on :tags, :subjects
+
+  validates :resource_files, presence: true
+  validates :photo, presence: true
+
+  TAGS = %w[Test Exam Quiz Essay Project Unit Individual Group Homework In-class]
+  SUBJECTS = %w[Economics English Math Physics Biology Chemistry History Art Music]
 end

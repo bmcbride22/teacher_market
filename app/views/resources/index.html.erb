@@ -3,96 +3,17 @@
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
-    <!--
-		<div class="flex justify-between items-center mb-6">
-			<%= link_to 'New resource', new_resource_path, class: "btn btn-primary" %>
-		</div>
-		-->
   </div>
-  <div class="mx-auto max-w-2xl py-24 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="bg-violet-600 pb-16 lg:relative lg:z-10 lg:pb-0">
-      <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
-        <div class="relative lg:-my-8">
-          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"></div>
-          <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:h-full lg:p-0">
-            <div class="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
-              <img class="object-cover h-full lg:w-full" src="https://images.unsplash.com/photo-1587614382417-36be60447b6b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="mt-12 lg:col-span-2 lg:m-0 lg:pl-8">
-          <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
-            <blockquote>
-              <div>
-                <svg class="h-12 w-12 text-white opacity-25" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-                  <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                </svg>
-                <p class="mt-6 text-2xl font-medium text-white">Teacher Market has an impressive selection of high-quality materials that have made lesson planning easier and more engaging for my students. I highly recommend it to any educator looking to bring their teaching to the next level.</p>
-              </div>
-              <footer class="mt-6">
-                <p class="text-base font-medium text-white">Ava Chesnik </p>
-                <p class="text-base font-medium text-violet-100">Middle School Science Teacher</p>
-              </footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mx-auto max-w-2xl py-8 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
-    <div class="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900">Browse by Category</h2>
-      <a href="#" class="text-sm font-semibold text-violet-600 hover:text-violet-500 sm:block">
-        Browse all categories
-        <span aria-hidden="true"> </span>
-      </a>
-    </div>
-    <div class="mt-4 flow-root">
-      <div class="-my-2">
-        <div class="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
-          <div class="min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
-            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
-              <span aria-hidden="true" class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="h-full w-full object-cover object-center">
-              </span>
-              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-              <span class="relative mt-auto text-center text-xl font-bold text-white">Mathematics</span>
-            </a>
-            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
-              <span aria-hidden="true" class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1612454001981-ec4f7eed5cc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=691&q=80" alt="" class="h-full w-full object-cover object-center">
-              </span>
-              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-              <span class="relative mt-auto text-center text-xl font-bold text-white">Biology</span>
-            </a>
-            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
-              <span aria-hidden="true" class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="" class="h-full w-full object-cover object-center">
-              </span>
-              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-              <span class="relative mt-auto text-center text-xl font-bold text-white">English</span>
-            </a>
-            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
-              <span aria-hidden="true" class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="h-full w-full object-cover object-center">
-              </span>
-              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-              <span class="relative mt-auto text-center text-xl font-bold text-white">Economics</span>
-            </a>
-            <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
-              <span aria-hidden="true" class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1635524168565-fd454def6512?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="" class="h-full w-full object-cover object-center">
-              </span>
-              <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"></span>
-              <span class="relative mt-auto text-center text-xl font-bold text-white">Physics</span>
-            </a>
-          </div>
-        </div>
-      </div>
+  <div class="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:flex lg:justify-between lg:px-8">
+    <div class="max-w-xl">
+      <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">Search Results</h2>
+      <% if @search_query %>
+        <p class="mt-5 text-xl text-gray-500">Showing results for <%= @search_query %></p>
+      <% end %>
     </div>
   </div>
   <div class="mx-auto max-w-2xl py-4 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
-    <h2 class="sr-only">Resources</h2>
+    <h2 class="sr-only">Search Results: </h2>
     <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
       <% @resources.each do |resource| %>
         <%= render 'shared/resource_grid_item', resource: resource%>
@@ -100,4 +21,3 @@
     </div>
   </div>
 </div>
-``
