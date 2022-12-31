@@ -69,3 +69,4 @@ gem "vite_ruby"
 gem "image_processing", "~> 1.2"
 gem "annotate", group: :development
 gem "foreman"
+gem 'acts-as-taggable-on', '~> 9.0', '>= 9.0.1'

@@ -13,17 +13,11 @@
 #  reset_password_token   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  subject_id             :bigint           default(1), not null
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#  index_users_on_subject_id            (subject_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (subject_id => subjects.id)
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -32,10 +26,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
-  has_many :resources
+  has_many :resources, class_name: 'Resource'
   has_many :transactions
-
-  belongs_to :subject
 
   def purchased_resources
     purchased_resources = []

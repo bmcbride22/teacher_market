@@ -43,18 +43,6 @@
       </div>
     </div>
     <div class="sm:col-span-3">
-      <%= f.label :subject, class:"block text-sm font-medium text-gray-700"  %>
-      <div class="mt-1">
-        <select id="user_subject_id" name="user[subject_id]" autocomplete="subject_id" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-          <%= Subject.all.each do |subject| %>
-            <% if subject.id != 1 %>
-              <option value="<%= subject.id %>"><%= subject.title %></option>
-            <% end %>
-          <% end %>
-        </select>
-      </div>
-    </div>
-    <div class="sm:col-span-3">
       <%= f.label :current_password,'Current Password*', class:"text-sm font-medium text-gray-700"  %>
       <span class="text-xs text-gray-400">(Must enter your current password to save changes)</span>
       <div class="mt-1">
