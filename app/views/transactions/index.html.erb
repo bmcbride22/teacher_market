@@ -1,5 +1,36 @@
-<h1>Hello from Transactions#index</h1>
-<% @transactions.each do |transaction|%>
-  <h2><%= transaction.resource.title %></h2>
-  <h4>purchased on <%= transaction.created_at.to_date %></h4>
-<% end %>
+<div class="bg-white">
+  <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+    <div class="max-w-xl">
+      <h1 id="your-orders-heading" class="text-3xl font-bold tracking-tight text-gray-900">Your Orders</h1>
+    </div>
+    <div class="mt-12 space-y-16 sm:mt-16">
+      <% current_user.transactions.each do |transaction| %>
+        <section aria-labelledby="<%= transaction.id %>-heading">
+          <div class="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
+            <h2 id="<%= transaction.id %>-heading" class="text-lg font-medium text-gray-900 md:flex-shrink-0">Order #<%= transaction.id %></h2>
+            <div class="space-y-5 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 md:min-w-0 md:flex-1">
+              <p class="text-sm font-medium text-gray-500">Delivered on <%= transaction.created_at.strftime("%d %b, %Y") %></p>
+            </div>
+          </div>
+          <div class="mt-6 -mb-6 flow-root divide-y divide-gray-200 border-t border-gray-200">
+            <div class="py-6 sm:flex">
+              <div class="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
+                <%= image_tag transaction.resource.photo, class: "h-20 w-20 flex-none rounded-md object-cover object-center sm:h-48 sm:w-48" %>
+                <div class="min-w-0 flex-1 pt-1.5 sm:pt-0">
+                  <h3 class="text-sm font-medium text-gray-900">
+                    <%= link_to transaction.resource.title, resource_path(transaction.resource.id)  %>
+                  </h3>
+                  <p class="mt-4 font-medium text-gray-900">$<%= transaction.resource.price %></p>
+                </div>
+              </div>
+              <div class="mt-6 space-y-4 sm:mt-0 sm:ml-6 sm:w-40 sm:flex-none">
+                <%= link_to 'View resource', resource_path(transaction.resource.id), class:"flex w-full items-center justify-center rounded-md border border-transparent bg-violet-600 py-2 px-2.5 text-sm font-medium text-white shadow-sm hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 sm:w-full sm:flex-grow-0" %>
+                <%= link_to 'Shop similar', resources_path(subject: transaction.resource.subject_list[0]), class: "flex w-full items-center justify-center rounded-md border border-gray-300 bg-white py-2 px-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 sm:w-full sm:flex-grow-0" %>
+              </div>
+            </div>
+          </div>
+        </section>
+      <% end %>
+    </div>
+  </div>
+</div>

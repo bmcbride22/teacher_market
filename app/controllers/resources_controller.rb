@@ -14,6 +14,9 @@ class ResourcesController < ApplicationController
                  elsif params[:subject].present?
                    @search_query = params[:subject]
                    Resource.tagged_with(params[:subject])
+                 elsif params[:search]
+                   @search_query = params[:search]
+                   Resource.search_by_title_description(params[:search])
 
                  else
                    Resource.all

@@ -19,6 +19,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Resource < ApplicationRecord
+  include PgSearch::Model
   has_many_attached :resource_files, dependent: :destroy
   has_one_attached :photo, dependent: :destroy
   belongs_to :user
@@ -27,6 +28,13 @@ class Resource < ApplicationRecord
 
   validates :resource_files, presence: true
   validates :photo, presence: true
+
+  pg_search_scope :search_by_title_description,
+                  against: %i[title description],
+
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   TAGS = %w[Test Exam Quiz Essay Project Unit Individual Group Homework In-class]
   SUBJECTS = %w[Economics English Math Physics Biology Chemistry History Art Music]
