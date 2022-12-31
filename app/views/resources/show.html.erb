@@ -56,7 +56,7 @@
             <%# Download Link %>
             <% @resource.resource_files.each_with_index do |file, i| %>
               <%# <%= link_to "Download", cl_private_download_url("my_private_image", :jpg, :attachment => true,  api_key: Rails.application.credentials.dig(:cloudinary, :access_key_id) %>
-              <%= link_to "Resource #{i+1}", rails_blob_path(@resource.resource_files[i], disposition: 'attachment', :flags=>"attachment"), class: "flex w-full items-center justify-center rounded-md border border-transparent bg-violet-600 py-3 px-8 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-gray-50" %>
+              <%= link_to "Resource #{i+1}", @resource.resource_files[i].url, class: "flex w-full items-center justify-center rounded-md border border-transparent bg-violet-600 py-3 px-8 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-gray-50" %>
             <% end %>
           <% elsif @user.resources.include?(@resource) %>
             <%= link_to 'Edit resource', edit_resource_path(@resource.id), class: "flex w-full items-center justify-center rounded-md border border-transparent bg-violet-600 py-3 px-8 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-gray-50"  %>
